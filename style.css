@@ -1,10 +1,20 @@
+:root {
+  --nav-text-height: 80px;
+  --nav-background-color: hsl(227, 100%, 10%);
+  --nav-hover-background-color: hsl(227, 100%, 25%);
+  --nav-text-color: hsl(0, 0%, 98%);
+  --nav-hover-text-shadow: 1px 1px hsl(240, 100%, 75%);
+}
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+/* basically html = :root but we set
+ variable in :root as best practice */
 html {
-  font-size: calc(10px + 0.2vw);
+  font-size: calc(10px + 0.5vw);
+  /* smooth scroll */
   scroll-behavior: smooth;
 }
 body {
@@ -16,32 +26,70 @@ footer {
   padding: 20px;
 }
 
+/*####### nav with flexbox */
 nav {
   position: fixed;
   top: 0;
-  background-color: hsl(227, 100%, 10%);
+  display: flex;
+  /* you can use gap or justify as you like */
+  gap: 20px;
+  /* justify-content: space-around; */
+  align-items: center;
+  background-color: var(--nav-background-color);
+  /* the nave will be as heigh as hiegest child anyway */
+  /* height: var(--nav-text-height); */
+  width: 100vw;
+}
+
+nav a {
+  /* a child of a flexbox is controlled so
+   changing display has no effect */
+  /* display: inline-block; */
+  text-align: center;
+  height: var(--nav-text-height);
+  line-height: var(--nav-text-height);
+  /* has no effect in flexbox because
+  it only works on inline and inline-block */
+  /* vertical-align: middle; */
+  width: calc(100% / 11);
+  /* margin-right: 5px; */
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--nav-text-color);
+}
+/* ##################### */
+
+/*####### nav with inline-block */
+/*
+nav {
+  position: fixed;
+  top: 0;
+  background-color: var(--nav-background-color);
   padding: 0 10px;
-  /* height: 50px; */
+  // height: 100px; 
   width: 100vw;
 }
 
 nav a {
   display: inline-block;
   text-align: center;
-  vertical-align: middle;
-  line-height: 50px;
+  height: var(--nav-text-height);
+  line-height: var(--nav-text-height);
+  // vertical-align: middle;
+  width: calc(100% / 9);
+  margin-right: 5px;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 0.7rem;
-  color: hsl(0, 0%, 98%);
-  height: 50px;
-  width: calc(100% / 9);
-  margin-right: 5px;
+  color: var(--nav-text-color);
 }
+*/
+/* ############## */
 
 nav a:hover {
-  text-shadow: 1px 1px hsl(240, 100%, 75%);
-  background-color: hsl(240, 100%, 50%);
+  text-shadow: var(--nav-hover-text-shadow);
+  background-color: var(--nav-hover-background-color);
 }
 
 header,
